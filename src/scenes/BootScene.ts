@@ -1,5 +1,5 @@
-import phaserImg from '@assets/phaser.png';
-import particleImg from '@assets/particle.png';
+import phaserImg from '@assets/images/phaser.png';
+import particleImg from '@assets/images/particle.png';
 import { TEXTURE_KEY as PHASER_TEXTURE_KEY } from '@objects/PhaserImg';
 
 export class BootScene extends Phaser.Scene {
