@@ -1,6 +1,4 @@
-import phaserImg from '@assets/images/phaser.png';
-import particleImg from '@assets/images/particle.png';
-import { TEXTURE_KEY as PHASER_TEXTURE_KEY } from '@objects/PhaserImg';
+import cat from '@assets/images/cat.png';
 
 export class BootScene extends Phaser.Scene {
   constructor() {
@@ -8,8 +6,7 @@ export class BootScene extends Phaser.Scene {
   }
 
   preload(): void {
-    this.load.image(PHASER_TEXTURE_KEY, phaserImg);
-    this.load.image('particle', particleImg);
+    this.load.spritesheet('cat', cat, { frameWidth: 32, frameHeight: 32 });
   }
 
   update(): void {

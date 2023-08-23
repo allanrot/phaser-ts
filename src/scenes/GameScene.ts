@@ -1,5 +1,3 @@
-import PhaserImg from '@objects/PhaserImg';
-
 export class GameScene extends Phaser.Scene {
   constructor() {
     super({ key: 'GameScene' });
@@ -8,17 +6,18 @@ export class GameScene extends Phaser.Scene {
   init(): void {}
 
   create(): void {
-    const particles = this.add.particles('particle');
-
-    const phaser = PhaserImg.create(this, 400, 100);
-
-    const emitter = particles.createEmitter({
-      speed: 100,
-      scale: { start: 1, end: 0 },
-      blendMode: 'ADD',
+    this.add.rectangle(0, 500, 800, 100, 0x9d2d9e).setOrigin(0, 0);
+    
+    this.anims.create({
+      key: 'walk',
+      frames: this.anims.generateFrameNumbers('cat', {}),
+      frameRate: 16,
+      repeat: -1
     });
 
-    emitter.startFollow(phaser);
+    const sprite = this.add.sprite(25, 25, 'cat').play('walk');
+
+    Phaser.Actions.AlignTo([sprite], Phaser.Display.Align.CENTER);
   }
 
   preload(): void {}

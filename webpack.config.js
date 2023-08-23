@@ -68,7 +68,7 @@ module.exports = {
     watchFiles: ['src/**/*.ts', 'index.html'],
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', '.json'],
     plugins: [tsconfigPathsPluginCfg],
   },
 };
