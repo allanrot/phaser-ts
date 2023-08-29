@@ -15,6 +15,7 @@ window.addEventListener('load', () => {
   const cfg: Phaser.Types.Core.GameConfig = {
     width: 50,
     height: 50,
+    zoom: 10,
     type: Phaser.AUTO,
     parent: 'game',
     scene: [BootScene, GameScene],
