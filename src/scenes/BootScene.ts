@@ -10,7 +10,7 @@ export class BootScene extends Phaser.Scene {
   preload(): void {
     this.load.image('ground', ground);
     this.load.image('background', background);
-    this.load.spritesheet('cat', cat, { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet('cat', cat, { frameWidth: 32, frameHeight: 26 });
   }
 
   update(): void {

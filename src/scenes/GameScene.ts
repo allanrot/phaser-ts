@@ -25,7 +25,7 @@ export class GameScene extends Phaser.Scene {
 
   private createPlatform(): void {
     this.platforms = this.physics.add.staticGroup();
-    this.platforms.create(128, 536, 'background').setScale(3).refreshBody();
+    this.platforms.create(156, 536, 'background').setScale(3).refreshBody();
     this.platforms.create(256, 536, 'background').setScale(3).refreshBody();
     this.platforms.create(384, 536, 'background').setScale(3).refreshBody();
     this.platforms.create(512, 536, 'background').setScale(3).refreshBody();
@@ -35,7 +35,7 @@ export class GameScene extends Phaser.Scene {
   }
 
   private createCat(): void {
-    this.cat = new Cat(this, 300, 250, this.platforms);
-    this.cat.create();
+    this.cat = new Cat(this, 100, 100, this.platforms);
+    this.cat.init();
   }
 }

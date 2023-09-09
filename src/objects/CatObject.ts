@@ -16,12 +16,13 @@ export class Cat {
         this.platforms = platforms;
     }
 
-    public create(): void {
+    public init(): void {
         this.createAnimations(this.scene);
         this.cat.setScale(this.scale);
         this.cat.setBounce(this.bounce);
         this.cat.setCollideWorldBounds(true);
         this.cat.setGravityY(this.gravity);
+        this.cat.setBodySize(20, 26);
         this.scene.physics.add.collider(this.cat, this.platforms);
     }
 
