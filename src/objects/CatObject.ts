@@ -5,32 +5,23 @@ export class Cat {
     scene: Phaser.Scene;
     platforms: Phaser.Physics.Arcade.StaticGroup;
     velocity: number = 200;
+    jumpVelocity: number = 600;
+    scale: number = 3;
+    bounce: number = 0.2;
+    gravity: number = 750;
 
     constructor(scene: Phaser.Scene, x: number, y: number, platforms: Phaser.Physics.Arcade.StaticGroup) {
         this.cat = scene.physics.add.sprite(x, y, 'cat');
         this.scene = scene;
         this.platforms = platforms;
-
-        // scene.anims.create({
-        //     key: 'left',
-        //     frames: scene.anims.generateFrameNumbers('cat', {}),
-        //     frameRate: 10,
-        //     repeat: -1
-        // });
-        
-        scene.anims.create({
-            key: 'walk',
-            frames: scene.anims.generateFrameNumbers('cat', {}),
-            frameRate: 10,
-            repeat: 1
-        });
     }
 
     public create(): void {
-        this.cat.setScale(3.5);
-        this.cat.setBounce(0.2);
+        this.createAnimations(this.scene);
+        this.cat.setScale(this.scale);
+        this.cat.setBounce(this.bounce);
         this.cat.setCollideWorldBounds(true);
-        this.cat.setGravityY(750);
+        this.cat.setGravityY(this.gravity);
         this.scene.physics.add.collider(this.cat, this.platforms);
     }
 
@@ -48,7 +39,7 @@ export class Cat {
 
     public jump(): void {
         if(this.cat.body.touching.down) {
-            this.cat.setVelocityY(-600);
+            this.cat.setVelocityY(-this.jumpVelocity);
         }
     }
 
@@ -56,5 +47,14 @@ export class Cat {
         this.cat.stop();
         this.cat.setFrame(0);
         this.cat.setVelocityX(0);
+    }
+
+    private createAnimations(scene: Phaser.Scene): void {
+        scene.anims.create({
+            key: 'walk',
+            frames: scene.anims.generateFrameNumbers('cat', {}),
+            frameRate: 10,
+            repeat: 1
+        });
     }
 }
