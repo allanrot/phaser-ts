@@ -13,7 +13,7 @@ export class Game extends Phaser.Game {
 
 window.addEventListener('load', () => {
   const cfg: Phaser.Types.Core.GameConfig = {
-    width: 800,
+    width: 832,
     height: 600,
     zoom: 1,
     type: Phaser.AUTO,

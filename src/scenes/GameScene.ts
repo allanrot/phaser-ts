@@ -1,9 +1,9 @@
-import { Cat } from "src/characters/Cat";
-import { Directions } from "src/domain/enums/Direction.enum";
+import { Cat } from "@objects/CatObject";
+import { CursorsUtil } from "@utils/Cursors";
 
 export class GameScene extends Phaser.Scene {
   platforms: Phaser.Physics.Arcade.StaticGroup;
-  cat: any;
+  cat: Cat;
   cursors: Phaser.Types.Input.Keyboard.CursorKeys;
 
   constructor() {
@@ -20,24 +20,18 @@ export class GameScene extends Phaser.Scene {
   }
 
   update(): void {
-    if (this.cursors.right.isDown) {
-      this.cat.walk(Directions.Right);
-    } else if (this.cursors.left.isDown) {
-      this.cat.walk(Directions.Left);
-    } else {
-      this.cat.stop();
-    }
-    if (this.cursors.up.isDown) {
-      this.cat.jump();
-    }
+    CursorsUtil.handle(this.cursors, this.cat);
   }
 
   private createPlatform(): void {
     this.platforms = this.physics.add.staticGroup();
-    this.platforms.create(400, 568, 'ground').setScale(2).refreshBody();
-
-    this.platforms.create(600, 400, 'ground');
-    this.platforms.create(50, 250, 'ground');
+    this.platforms.create(128, 536, 'background').setScale(3).refreshBody();
+    this.platforms.create(256, 536, 'background').setScale(3).refreshBody();
+    this.platforms.create(384, 536, 'background').setScale(3).refreshBody();
+    this.platforms.create(512, 536, 'background').setScale(3).refreshBody();
+    this.platforms.create(640, 536, 'background').setScale(3).refreshBody();
+    this.platforms.create(638, 175, 'ground');
+    this.platforms.create(50, 325, 'ground');
   }
 
   private createCat(): void {
